@@ -3,7 +3,7 @@ name: Deploy VuePress to GitHub Pages
 on:
   push:
     branches:
-      - main # Change 'main' to your default branch if different
+      - main  # Change 'main' to your default branch if different
 
 jobs:
   build-and-deploy:
@@ -14,17 +14,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Step 2: Install Node.js and dependencies
+      # Step 2: Setup Node.js environment
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18" # You can specify the version you want
+          node-version: '18'
 
-      # Step 3: Install project dependencies
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Step 4: Build VuePress site
+      # Step 4: Build the VuePress site
       - name: Build VuePress
         run: npm run docs:build
 
@@ -34,3 +34,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/.vuepress/dist
+          publish_branch: gh-pages
