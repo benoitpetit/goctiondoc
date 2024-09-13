@@ -14,7 +14,7 @@ export default defineUserConfig({
   title: "Goction Documentation",
   description:
     "Official documentation for Goction - Lightweight and Extensible Action Framework",
-  base: "/", // link base github page
+  base: "/", // Change this to '/' if your repo is named goction.github.io
   theme: defaultTheme({
     logo: "/images/goction.png",
     repo: "https://github.com/benoitpetit/goction",

@@ -1,64 +1,51 @@
-# Simple workflow for deploying VuePress content to GitHub Pages
 name: Deploy VuePress to GitHub Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["master"] # auto workflow with this branch
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches: ["master"] # Assurez-vous que c'est bien la branche principale de votre dépôt
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job for building and deploying VuePress
-  deploy:
+  build-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Step 2: Setup Node.js environment
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
+          cache: "npm"
 
-      # Step 3: Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # Step 4: Build the VuePress site
       - name: Build VuePress site
         run: npm run docs:build
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
 
-      # Step 5: Setup Pages for deployment
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # Step 6: Upload VuePress build artifact (i.e., ./docs/.vuepress/dist)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./docs/.vuepress/dist" # The build directory for VuePress
+          path: "./docs/.vuepress/dist"
 
-      # Step 7: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
