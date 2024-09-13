@@ -1,58 +1,71 @@
-# Quick Start Guide
+# Usage Guide
 
-Get up and running with Goction in just a few minutes!
+This guide covers the main usage scenarios for Goction.
 
-## Prerequisites
+## Executing Goctions
 
-- Go 1.16 or higher
-- Linux-based operating system (for systemd support)
+### Primary Method: HTTP API
 
-## Installation
-
-Install Goction with our quick installation script:
+The primary way to execute goctions is through the HTTP API:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/benoitpetit/goction/master/hack/install.sh | sudo bash
+curl -X POST -H "Content-Type: application/json" -H "X-API-Token: your-secret-token" -d '{"args":["arg1", "arg2"]}' http://localhost:8080/goctions/my_goction
 ```
 
-## Create Your First Goction
+Replace `your-secret-token` with your actual API token and `my_goction` with the name of your goction.
 
-1. Create a new goction:
+### Quick Testing: CLI
+
+For rapid testing during development, you can use the CLI:
 
 ```bash
-goction new my_first_goction
+goction run my_goction [arg1 arg2 ...]
 ```
 
-2. Edit the goction:
+This method is useful for quick tests and debugging, but remember that the HTTP API is the primary method for production use.
+
+## Managing Goctions
+
+### Creating a New Goction
+
+To create a new goction:
 
 ```bash
-nano ~/.config/goction/goctions/my_first_goction/main.go
+goction new my_goction
 ```
 
-3. Update the goction:
+### Updating a Goction
+
+After modifying a goction's code, update it:
 
 ```bash
-goction update my_first_goction
+goction update my_goction
 ```
 
-## Run Your Goction
+## Service Management
 
-1. Start the Goction service:
+### Starting the Service
 
 ```bash
 goction start
 ```
 
-2. Execute your goction:
+### Stopping the Service
 
 ```bash
-goction run my_first_goction arg1 arg2
+goction stop
 ```
 
-## Next Steps
+## Dashboard and Monitoring
 
-- Read the [full installation guide](/guide/installation.md) for more options
-- Learn about [configuration](/guide/configuration.md) to customize Goction
-- Explore [advanced usage](/guide/advanced.md) for more features
+### Displaying the Dashboard
+
+```bash
+goction dashboard
+```
+
+This displays information about your goctions, system status, and recent logs.
+
+Remember to check the [configuration guide](/guide/configuration.md) for customizing Goction's behavior.
 
 <FeedbackComponent/>
