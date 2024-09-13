@@ -4,7 +4,7 @@ This guide covers the main usage scenarios for Goction.
 
 ## Executing Goctions
 
-### Primary Method: HTTP API
+### Method: HTTP API
 
 The primary way to execute goctions is through the HTTP API:
 
@@ -14,15 +14,13 @@ curl -X POST -H "Content-Type: application/json" -H "X-API-Token: your-secret-to
 
 Replace `your-secret-token` with your actual API token and `my_goction` with the name of your goction.
 
-### Quick Testing: CLI
+### Method: CLI for Testing
 
 For rapid testing during development, you can use the CLI:
 
 ```bash
 goction run my_goction [arg1 arg2 ...]
 ```
-
-This method is useful for quick tests and debugging, but remember that the HTTP API is the primary method for production use.
 
 ## Managing Goctions
 

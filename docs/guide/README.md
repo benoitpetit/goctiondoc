@@ -2,7 +2,7 @@
 
 Welcome to the Goction guide! This comprehensive documentation will help you get started with Goction and master its features.
 
-Goction is a powerful, lightweight framework designed to create, manage, and execute custom actions (called "goctions") primarily via an HTTP API, with additional CLI tools for development and testing.
+Goction is a powerful, lightweight framework designed to create, manage, and execute custom actions (called "goctions") via an HTTP API or CLI.
 
 ## Key Features
 
