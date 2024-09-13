@@ -102,6 +102,26 @@ To update Goction itself:
 goction self-update
 ```
 
+### Exporting a Goction
+
+To export a goction for sharing or backup:
+
+```bash
+goction export my_goction
+```
+
+This will create a zip file named `my_goction.zip` in the current directory.
+
+### Importing a Goction
+
+To import a goction from a zip file:
+
+```bash
+goction import my_goction.zip
+```
+
+
+
 Remember to check the [configuration guide](/guide/configuration.md) for customizing Goction's behavior.
 
 <FeedbackComponent/>
