@@ -14,7 +14,7 @@ Before installing Goction, ensure you have:
 You can quickly install Goction using our installation script:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/benoitpetit/goction/master/hack/install.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/goction/goction/master/hack/install.sh | sudo bash
 ```
 
 This script will download and install Goction on your system.
@@ -25,7 +25,7 @@ If you prefer to install Goction manually, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/benoitpetit/goction
+   git clone https://github.com/goction/goction/
    cd goction
    ```
 

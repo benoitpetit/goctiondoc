@@ -1,12 +1,12 @@
 # Goction Documentation
 
-This repository contains the official documentation for [Goction](https://github.com/benoitpetit/goction), a lightweight and extensible framework for creating, managing, and executing custom actions.
+This repository contains the official documentation for [Goction](https://github.com/goction/goction), a lightweight and extensible framework for creating, managing, and executing custom actions.
 
 ## About Goction
 
 Goction is a service that allows users to create and manage custom actions (called "goctions") via a command-line interface (CLI) and an HTTP API. The main Goction service is developed and maintained in a separate repository:
 
-- [Goction Service Repository](https://github.com/benoitpetit/goction)
+- [Goction Service Repository](https://github.com/goction/goction)
 
 This documentation aims to provide comprehensive information about installing, configuring, and using the Goction service.
 
@@ -33,7 +33,7 @@ This documentation is built using [VuePress](https://v2.vuepress.vuejs.org/), a 
 1. Clone this documentation repository:
 
    ```
-   git clone https://github.com/benoitpetit/goctiondoc.git
+   git clone https://github.com/goction/goction.git
    cd goctiondoc
    ```
 
@@ -95,7 +95,7 @@ Please make sure to update tests as appropriate and adhere to the [Contributor C
 
 This documentation is automatically deployed to GitHub Pages using GitHub Actions. Any push to the `main` branch will trigger a new build and deployment.
 
-The live documentation can be found at: https://benoitpetit.github.io/goctiondoc/
+The live documentation can be found at: https://goction.github.io
 
 ## License
 
@@ -103,12 +103,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Benoit Petit - [GitHub](https://github.com/benoitpetit)
+Ben - [GitHub](https://github.com/benoitpetit)
 
 Project Links:
 
-- Goction Service: [https://github.com/benoitpetit/goction](https://github.com/benoitpetit/goction)
-- Goction Documentation: [https://github.com/benoitpetit/goctiondoc](https://github.com/benoitpetit/goctiondoc)
+- Goction Service: [https://github.com/goction/goction](https://github.com/goction/goction)
+- Goction Documentation: [https://github.com/goction/goction.github.io](https://github.com/goction/goction.github.io)
 
 ## Acknowledgements
 

@@ -4,7 +4,7 @@ Welcome to the Goction community! Here you'll find resources to help you connect
 
 ## Community Channels
 
-- **GitHub Discussions**: For general questions and discussions about Goction, visit our [GitHub Discussions](https://github.com/benoitpetit/goction/discussions) page.
+- **GitHub Discussions**: For general questions and discussions about Goction, visit our [GitHub Discussions](https://github.com/goction/goction/discussions) page.
 
 ## Getting Help
 
@@ -16,8 +16,8 @@ Welcome to the Goction community! Here you'll find resources to help you connect
 
 We welcome contributions from the community! Here's how you can contribute:
 
-- **Report Bugs**: If you find a bug, please report it on our [GitHub Issues](https://github.com/benoitpetit/goction/issues) page.
-- **Suggest Features**: Have an idea for a new feature? Share it on our [GitHub Discussions](https://github.com/benoitpetit/goction/discussions) page.
+- **Report Bugs**: If you find a bug, please report it on our [GitHub Issues](https://github.com/goction/goction/issues) page.
+- **Suggest Features**: Have an idea for a new feature? Share it on our [GitHub Discussions](https://github.com/goction/goction/discussions) page.
 - **Submit Pull Requests**: Want to fix a bug or add a feature yourself? Check out our [Contributing Guide](/guide/contributing.html) to get started.
 
 Thank you for being part of the Goction community!

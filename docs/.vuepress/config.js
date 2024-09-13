@@ -17,7 +17,7 @@ export default defineUserConfig({
   base: "/", // Change this to '/' if your repo is named goction.github.io
   theme: defaultTheme({
     logo: "/images/goction.png",
-    repo: "https://github.com/benoitpetit/goction",
+    repo: "https://github.com/goction/goction/",
     navbar: [
       { text: "Home", link: "/" },
       { text: "Guide", link: "/guide/" },
