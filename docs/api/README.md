@@ -28,8 +28,4 @@ For a complete list of available endpoints and their usage, see the [Endpoints](
 
 The API uses conventional HTTP response codes to indicate the success or failure of requests. See the [Error Handling](./error-handling.md) section for more information.
 
-## Examples
-
-For code examples in various programming languages, see the [Examples](./examples.md) section.
-
 <FeedbackComponent/>
