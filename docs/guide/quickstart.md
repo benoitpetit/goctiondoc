@@ -1,69 +1,91 @@
-# Usage Guide
+# Quickstart Guide
 
-This guide covers the main usage scenarios for Goction.
+Get up and running with Goction in just a few minutes!
 
-## Executing Goctions
+## 1. Installation
 
-### Method: HTTP API
-
-The primary way to execute goctions is through the HTTP API:
+Install Goction using our quick installation script:
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -H "X-API-Token: your-secret-token" -d '{"args":["arg1", "arg2"]}' http://localhost:8080/goctions/my_goction
+curl -sSL https://raw.githubusercontent.com/goction/goction/master/hack/install.sh | sudo bash
 ```
 
-Replace `your-secret-token` with your actual API token and `my_goction` with the name of your goction.
+## 2. Create Your First Goction
 
-### Method: CLI for Testing
-
-For rapid testing during development, you can use the CLI:
+Create a new goction named `hello_world`:
 
 ```bash
-goction run my_goction [arg1 arg2 ...]
+goction new hello_world
 ```
 
-## Managing Goctions
+This creates a new directory `~/.config/goction/goctions/hello_world` with a `main.go` file.
 
-### Creating a New Goction
+## 3. Edit Your Goction
 
-To create a new goction:
+Open the `main.go` file:
 
 ```bash
-goction new my_goction
+nano ~/.config/goction/goctions/hello_world/main.go
 ```
 
-### Updating a Goction
+Replace the content with this simple example:
 
-After modifying a goction's code, update it:
+```go
+package main
+
+import "fmt"
+
+func HelloWorld(args ...string) (string, error) {
+    return fmt.Sprintf("Hello, %s!", args[0]), nil
+}
+```
+
+## 4. Update Your Goction
+
+After editing, update the goction:
 
 ```bash
-goction update my_goction
+goction update hello_world
 ```
 
-## Service Management
+## 5. Start the Goction Service
 
-### Starting the Service
+Start the Goction service to enable API access:
 
 ```bash
 goction start
 ```
 
-### Stopping the Service
+## 6. Execute Your Goction
+
+Now you can execute your goction via the HTTP API:
 
 ```bash
-goction stop
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "X-API-Token: your-secret-token" \
+  -d '{"args":["World"]}' \
+  http://localhost:8080/goctions/hello_world
 ```
 
-## Dashboard and Monitoring
-
-### Displaying the Dashboard
+Replace `your-secret-token` with your actual API token. You can find your token by running:
 
 ```bash
-goction dashboard
+goction token
 ```
 
-This displays information about your goctions, system status, and recent logs.
+## 7. Quick CLI Test (Optional)
 
-Remember to check the [configuration guide](/guide/configuration.md) for customizing Goction's behavior.
+For rapid testing during development, you can also use the CLI:
+
+```bash
+goction run hello_world World
+```
+
+## Next Steps
+
+- Explore the [full installation guide](./installation.md) for more options
+- Learn about [configuration](./configuration.md) to customize Goction
+- Check out the [usage guide](./usage.md) for more detailed information
 
 <FeedbackComponent/>
