@@ -48,6 +48,7 @@ export default defineUserConfig({
             "/guide/commands.md",
             "/guide/advanced.md",
             "/guide/troubleshooting.md",
+            "securing-with-caddy",
           ],
         },
       ],
