@@ -2,7 +2,7 @@
 
 Welcome to the Goction guide! This comprehensive documentation will help you get started with Goction and master its features.
 
-Goction is a powerful, lightweight framework designed to create, manage, and execute custom actions (called "goctions") via an HTTP API or CLI.
+Goction is a powerful, lightweight tool designed for creating, managing, and executing custom actions (called "goctions") via an HTTP API or CLI. It provides a flexible platform for automating tasks and integrating custom actions into your workflows.
 
 ## Key Features
 
@@ -12,7 +12,7 @@ Goction is a powerful, lightweight framework designed to create, manage, and exe
 - **Monitoring Dashboard**: Keep track of your goctions with a built-in console dashboard.
 - **Flexible Configuration**: Customize Goction to fit your needs with JSON configuration.
 
-## Quick Start
+## 2. Quick Start
 
 Here's a quick example to get you started:
 
@@ -28,7 +28,7 @@ curl -X POST \
   http://localhost:8080/goctions/my_first_goction
 ```
 
-## Table of Contents
+## 3. Table of Contents
 
 1. [Quick Start](./quickstart.md)
 2. [Installation](./installation.md)

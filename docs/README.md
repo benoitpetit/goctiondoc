@@ -2,7 +2,7 @@
 home: true
 heroImage: /images/goction.png
 heroText: Goction
-tagline: Lightweight and Extensible Action Framework
+tagline: Lightweight and Extensible Action Platform
 actions:
   - text: Quick Start →
     link: /guide/quickstart.html
@@ -22,7 +22,7 @@ footer: MIT Licensed | Copyright © 2024-present Goction Team
 
 # Welcome to Goction
 
-Goction is a powerful, lightweight framework designed to create, manage, and execute custom actions. Whether you're automating tasks, building integrations, or creating complex workflows, Goction provides the tools you need.
+Goction is a powerful, lightweight tool designed to create, manage, and execute custom actions. Whether you're automating tasks, building integrations, or creating complex workflows, Goction provides the capabilities you need.
 
 ## Key Features
 
@@ -33,5 +33,3 @@ Goction is a powerful, lightweight framework designed to create, manage, and exe
 - **Flexible Configuration**: Customize Goction to fit your needs with JSON configuration.
 
 [Get started now](/guide/quickstart.html) and supercharge your workflow with Goction!
-
-<!-- <VideoTutorial/> -->

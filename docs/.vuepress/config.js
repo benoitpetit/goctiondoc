@@ -13,15 +13,24 @@ export default defineUserConfig({
   lang: "en-US",
   title: "Goction Documentation",
   description:
-    "Official documentation for Goction - Lightweight and Extensible Action Framework",
-  base: "/", // Change this to '/' if your repo is named goction.github.io
+    "Official documentation for Goction - Lightweight and Extensible Custom Action Platform",
+  base: "/",
   theme: defaultTheme({
     logo: "/images/goction.png",
     repo: "https://github.com/goction/goction/",
     navbar: [
-      { text: "Home", link: "/" },
-      { text: "Guide", link: "/guide/" },
-      { text: "API", link: "/api/" },
+      {
+        text: "Home",
+        link: "/",
+      },
+      {
+        text: "Guide",
+        link: "/guide/",
+      },
+      {
+        text: "API",
+        link: "/api/",
+      },
       { text: "FAQ", link: "/faq.md" },
       { text: "Community", link: "/community.md" },
     ],
@@ -31,12 +40,14 @@ export default defineUserConfig({
           text: "Guide",
           children: [
             "/guide/README.md",
+            "/guide/concepts.md",
             "/guide/quickstart.md",
             "/guide/installation.md",
             "/guide/configuration.md",
             "/guide/usage.md",
             "/guide/commands.md",
             "/guide/advanced.md",
+            "/guide/troubleshooting.md",
           ],
         },
       ],

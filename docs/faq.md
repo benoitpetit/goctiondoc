@@ -4,7 +4,7 @@
 
 ### What is Goction?
 
-Goction is a lightweight and extensible framework for creating, managing, and executing custom actions (called "goctions") via a command-line interface (CLI) and an HTTP API.
+Goction is a lightweight and extensible platform for creating, managing, and executing custom actions (called "goctions") via a command-line interface (CLI) and an HTTP API.
 
 ### Why should I use Goction?
 

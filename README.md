@@ -1,6 +1,6 @@
 # Goction Documentation
 
-This repository contains the official documentation for [Goction](https://github.com/goction/goction), a lightweight and extensible framework for creating, managing, and executing custom actions.
+This repository contains the official documentation for [Goction](https://github.com/goction/goction), a lightweight and extensible platform for creating, managing, and executing custom actions.
 
 ## About Goction
 

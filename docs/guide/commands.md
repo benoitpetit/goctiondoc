@@ -2,65 +2,80 @@
 
 This page provides a comprehensive list of all available commands in Goction.
 
-## Basic Commands
+## 1. Basic Commands
 
-### `goction new <goction-name>`
+### a. `goction new <goction-name>`
+
 Creates a new goction with the specified name.
 
-### `goction list`
+### b. `goction list`
+
 Lists all available goctions.
 
-### `goction update <goction-name>`
+### c. `goction update <goction-name>`
+
 Updates an existing goction.
 
-### `goction run <goction-name> [args...]`
+### d. `goction run <goction-name> [args...]`
+
 Executes a specific goction with optional arguments.
 
-## Service Management
+## 2. Service Management
 
-### `goction start`
+### a. `goction start`
+
 Starts the Goction service.
 
-### `goction stop`
+### b. `goction stop`
+
 Stops the Goction service.
 
-## Statistics and Monitoring
+## 3. Statistics and Monitoring
 
-### `goction stats [goction-name]`
+### a. `goction stats [goction-name]`
+
 Displays statistics for all goctions or a specific goction if name is provided.
 
-### `goction dashboard`
+### b. `goction dashboard`
+
 Shows the Goction dashboard with system information, recent logs, and goction statistics.
 
-## Configuration
+## 4. Configuration
 
-### `goction config view`
+### a. `goction config view`
+
 Displays the current Goction configuration.
 
-### `goction config reset`
+### b. `goction config reset`
+
 Resets the Goction configuration to default values.
 
-## API and Security
+## 5. API and Security
 
-### `goction token`
+### a. `goction token`
+
 Displays the current API token.
 
-## Maintenance
+## 6. Maintenance
 
-### `goction self-update`
+### a. `goction self-update`
+
 Updates Goction to the latest version (when implemented).
 
-## Logging
+## 7. Logging
 
-### `goction logs`
+### a. `goction logs`
+
 Displays recent log entries.
 
-## Help
+## 8. Help
 
-### `goction --help`
+### a. `goction --help`
+
 Displays help information about Goction commands.
 
-### `goction <command> --help`
+### b. `goction <command> --help`
+
 Displays help information for a specific command.
 
 Remember to use these commands with appropriate permissions. Some commands may require administrator privileges, especially those related to service management and configuration.

@@ -2,14 +2,14 @@
 
 This guide provides detailed instructions for installing Goction on your system.
 
-## Prerequisites
+## 1. Prerequisites
 
 Before installing Goction, ensure you have:
 
 - Go 1.16 or higher
 - An operating system compatible with systemd (e.g., most Linux distributions)
 
-## Quick Installation (Recommended)
+## 2. Quick Installation (Recommended)
 
 You can quickly install Goction using our installation script:
 
@@ -19,7 +19,7 @@ curl -sSL https://raw.githubusercontent.com/goction/goction/master/hack/install.
 
 This script will download and install Goction on your system.
 
-## Manual Installation
+## 3. Manual Installation
 
 If you prefer to install Goction manually, follow these steps:
 
@@ -34,7 +34,7 @@ If you prefer to install Goction manually, follow these steps:
    sudo ./hack/install.sh
    ```
 
-## Verifying the Installation
+## 4. Verifying the Installation
 
 After installation, verify that Goction is installed correctly by running:
 
@@ -44,7 +44,7 @@ goction --version
 
 This should display the version of Goction installed on your system.
 
-## Post-Installation
+## 5. Post-Installation
 
 After installation:
 
@@ -56,7 +56,7 @@ After installation:
    - For root: `/etc/goction/goctions/`
    - For other users: `~/.config/goction/goctions/`
 
-## Uninstallation
+## 6. Uninstallation
 
 To uninstall Goction, use the removal script:
 

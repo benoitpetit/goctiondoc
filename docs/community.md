@@ -18,7 +18,7 @@ We welcome contributions from the community! Here's how you can contribute:
 
 - **Report Bugs**: If you find a bug, please report it on our [GitHub Issues](https://github.com/goction/goction/issues) page.
 - **Suggest Features**: Have an idea for a new feature? Share it on our [GitHub Discussions](https://github.com/goction/goction/discussions) page.
-- **Submit Pull Requests**: Want to fix a bug or add a feature yourself? Check out our [Contributing Guide](/guide/contributing.html) to get started.
+
 
 Thank you for being part of the Goction community!
 

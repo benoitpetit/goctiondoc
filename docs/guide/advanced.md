@@ -2,23 +2,26 @@
 
 This guide covers advanced features and usage scenarios for Goction.
 
-## Custom Goction Development
+## 1. Custom Goction Development
 
-### Using External Packages
+### a. Using External Packages
 
 You can use any Go packages in your goctions. Here's how:
 
 1. In your goction directory, initialize a Go module:
+
    ```bash
    go mod init mygoction
    ```
 
 2. Add your dependencies:
+
    ```bash
    go get github.com/example/package
    ```
 
 3. Use the package in your `main.go`:
+
    ```go
    import "github.com/example/package"
    ```
@@ -28,14 +31,14 @@ You can use any Go packages in your goctions. Here's how:
    goction update mygoction
    ```
 
-### Goction Best Practices
+### b. Goction Best Practices
 
 - Keep your goctions focused on a single task
 - Use meaningful names for your goctions
 - Handle errors gracefully
 - Use environment variables for sensitive information
 
-## API Authentication
+## 2. API Authentication
 
 Goction uses token-based authentication for its API. To generate a new token:
 
@@ -45,15 +48,15 @@ goction token generate
 
 Use this token in the `X-API-Token` header when making API requests.
 
-## Performance Tuning
+## 3. Performance Tuning
 
-### Optimizing Goction Execution
+### a. Optimizing Goction Execution
 
 - Use goroutines for concurrent operations
 - Implement caching for frequently accessed data
 - Profile your goctions to identify bottlenecks
 
-### Scaling Goction
+### b. Scaling Goction
 
 For high-load scenarios, consider:
 
@@ -61,9 +64,9 @@ For high-load scenarios, consider:
 - Implementing a distributed goction execution system
 - Optimizing your database queries
 
-## Monitoring and Logging
+## 4. Monitoring and Logging
 
-### Advanced Logging
+### a. Advanced Logging
 
 Goction uses logrus for logging. You can configure advanced logging options in your `config.json`:
 
@@ -74,7 +77,7 @@ Goction uses logrus for logging. You can configure advanced logging options in y
 }
 ```
 
-### Integrating with Monitoring Systems
+### b. Integrating with Monitoring Systems
 
 Goction can be integrated with various monitoring systems:
 
@@ -82,7 +85,7 @@ Goction can be integrated with various monitoring systems:
 - ELK stack for log analysis
 - Grafana for visualization
 
-## Security Considerations
+## 5. Security Considerations
 
 - Regularly rotate your API tokens
 - Use HTTPS for API communication

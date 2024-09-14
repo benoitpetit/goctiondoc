@@ -2,125 +2,84 @@
 
 This guide covers the main usage scenarios for Goction.
 
-## Managing Goctions
+## 1. Managing Goctions
 
-### Creating a New Goction
-
-To create a new goction:
-
+### a. Creating a New Goction
 ```bash
 goction new my_goction
 ```
 
-This creates a new directory `my_goction` in your goctions directory with a `main.go` file.
-
-### Listing Goctions
-
-To list all available goctions:
-
+### b. Listing Goctions
 ```bash
 goction list
 ```
 
-### Updating a Goction
-
-After modifying a goction's code, update it in the registry:
-
+### c. Updating a Goction
 ```bash
 goction update my_goction
 ```
 
-### Modifying a Goction
-
+### d. Modifying a Goction
 1. Navigate to the goction's directory.
 2. Edit the `main.go` file.
-3. Run the update command:
+3. Run `goction update my_goction`
 
-```bash
-goction update my_goction
-```
+## 2. Service Management
 
-## Service Management
+### a. Using Goction Commands
+Start: `goction start`
+Stop: `goction stop`
 
-### Starting the Service
+### b. Using Systemd
+- Start: `sudo systemctl start goction`
+- Stop: `sudo systemctl stop goction`
+- Restart: `sudo systemctl restart goction`
+- Status: `sudo systemctl status goction`
+- Enable at boot: `sudo systemctl enable goction`
+- Disable at boot: `sudo systemctl disable goction`
 
-```bash
-goction start
-```
-
-### Stopping the Service
-
-```bash
-goction stop
-```
-
-## Using the API
-
-Execute a goction via the HTTP API:
-
+## 3. Using the API
 ```bash
 curl -X POST -H "Content-Type: application/json" -H "X-API-Token: your-secret-token" -d '{"args":["arg1", "arg2"]}' http://localhost:8080/goctions/my_goction
 ```
 
-Replace `your-secret-token` with your actual API token.
+## 4. Dashboard and Execution
 
-## Dashboard and Execution
-
-### Displaying the Dashboard
-
+### a. Displaying the Dashboard
 ```bash
 goction dashboard
 ```
 
-This displays information about your goctions, system status, and recent logs.
-
-### Executing a Goction
-
+### b. Executing a Goction
 ```bash
 goction run my_goction [arg1 arg2 ...]
 ```
 
-## Advanced Usage
+## 5. Advanced Usage
 
-### Viewing Logs
+### a. Viewing Logs
+Goction logs: `goction logs`
+Systemd service logs: `sudo journalctl -u goction`
 
-```bash
-goction logs
-```
-
-### Checking Goction Stats
-
+### b. Checking Goction Stats
 ```bash
 goction stats my_goction
 ```
 
-### Updating Goction
-
-To update Goction itself:
-
+### c. Updating Goction
 ```bash
 goction self-update
 ```
 
-### Exporting a Goction
-
-To export a goction for sharing or backup:
-
+### d. Exporting a Goction
 ```bash
 goction export my_goction
 ```
 
-This will create a zip file named `my_goction.zip` in the current directory.
-
-### Importing a Goction
-
-To import a goction from a zip file:
-
+### e. Importing a Goction
 ```bash
 goction import my_goction.zip
 ```
-
-
 
 Remember to check the [configuration guide](/guide/configuration.md) for customizing Goction's behavior.
 

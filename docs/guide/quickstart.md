@@ -82,7 +82,7 @@ For rapid testing during development, you can also use the CLI:
 goction run hello_world World
 ```
 
-## Next Steps
+## 8. Next Steps
 
 - Explore the [full installation guide](./installation.md) for more options
 - Learn about [configuration](./configuration.md) to customize Goction
