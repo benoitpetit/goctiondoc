@@ -43,7 +43,7 @@ Stop: `goction stop`
 curl -X POST -H "Content-Type: application/json" -H "X-API-Token: your-secret-token" -d '{"args":["arg1", "arg2"]}' http://localhost:8080/goctions/my_goction
 ```
 
-## 4. Dashboard and Execution
+## 4. Dashboard CLI and Execution
 
 ### a. Displaying the Dashboard
 ```bash
@@ -55,7 +55,18 @@ goction dashboard
 goction run my_goction [arg1 arg2 ...]
 ```
 
-## 5. Advanced Usage
+## 5. Dashboard HTTP
+
+Goction provides a powerful web-based dashboard for managing and monitoring your goctions. To access the dashboard:
+
+1. Ensure the Goction service is running.
+2. Open your web browser and navigate to `http://localhost:8080` (or the configured address).
+3. Log in using the credentials set in your Goction configuration.
+
+For more detailed information about the dashboard features and usage, please refer to our [Dashboard Guide](./dashboard.md).
+
+
+## 6. Advanced Usage
 
 ### a. Viewing Logs
 Goction logs: `goction logs`

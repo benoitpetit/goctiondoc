@@ -4,7 +4,7 @@ Welcome to the Goction guide! This comprehensive documentation will help you get
 
 Goction is a powerful, lightweight tool designed for creating, managing, and executing custom actions (called "goctions") via an HTTP API or CLI. It provides a flexible platform for automating tasks and integrating custom actions into your workflows.
 
-## Key Features
+## 1. Key Features
 
 - **HTTP API for Execution**: Execute goctions remotely with a secure HTTP API, perfect for integration with other services and applications.
 - **Intuitive CLI**: Easily create, list, and manage your goctions, with a `run` command for quick testing during development.
