@@ -19,7 +19,7 @@ goction token
 If you need to regenerate your token for security reasons, use:
 
 ```bash
-goction token regenerate
+goction token generate
 ```
 
 This will invalidate the old token and generate a new one.

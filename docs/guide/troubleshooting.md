@@ -62,7 +62,7 @@ This guide provides steps to diagnose and resolve common issues with Goction.
 #### Possible Solutions
 - Update the `port` setting in the configuration file
 - Adjust firewall rules: `sudo ufw allow 8080/tcp`
-- Regenerate the API token: `goction token regenerate`
+- Regenerate the API token: `goction token generate`
 
 ### 3. Goction Execution Failures
 

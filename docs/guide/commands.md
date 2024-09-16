@@ -47,7 +47,7 @@ Resets the Goction configuration to default values.
 ### `goction token`
 Displays the current API token.
 
-### `goction token regenerate`
+### `goction token generate`
 Regenerates the API token.
 
 ## Monitoring and Logging
@@ -81,6 +81,6 @@ Displays the current version of Goction.
 
 - Some commands may require administrator privileges, especially those related to service management and configuration.
 - Use `goction <command> --help` for detailed information on each command's usage and options.
-- For security reasons, always use `goction token regenerate` after suspecting that your API token might have been compromised.
+- For security reasons, always use `goction token generate` after suspecting that your API token might have been compromised.
 
 For more detailed information on using these commands, please refer to the [Usage Guide](./usage.md).
