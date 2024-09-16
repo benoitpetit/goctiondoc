@@ -2,42 +2,53 @@
 
 Welcome to the Goction guide! This comprehensive documentation will help you get started with Goction and master its features.
 
-Goction is a powerful, lightweight tool designed for creating, managing, and executing custom actions (called "goctions") via an HTTP API or CLI. It provides a flexible platform for automating tasks and integrating custom actions into your workflows.
+Goction is a lightweight and extensible platform designed for creating, managing, and executing custom actions (called "goctions") via a command-line interface (CLI), an HTTP API, and a web-based dashboard. It provides powerful tools for automation, integration, and workflow management.
 
-## 1. Key Features
+## Key Features
 
-- **HTTP API for Execution**: Execute goctions remotely with a secure HTTP API, perfect for integration with other services and applications.
-- **Intuitive CLI**: Easily create, list, and manage your goctions, with a `run` command for quick testing during development.
-- **Dynamic Loading**: Use Go plugins to extend functionality on the fly.
-- **Monitoring Dashboard**: Keep track of your goctions with a built-in console dashboard.
-- **Flexible Configuration**: Customize Goction to fit your needs with JSON configuration.
+- Easy creation and management of goctions in Go
+- Dynamic loading of goctions via Go plugins
+- Intuitive CLI interface
+- Secure HTTP API for remote execution
+- Web-based dashboard for monitoring and management
+- Flexible configuration via JSON
+- Advanced logging with logrus
+- Integration with systemd for robust service management
+- Import and export functionality for easy sharing and backup of goctions
 
-## 2. Quick Start
+## Quick Start
 
 Here's a quick example to get you started:
 
 1. [Install Goction](./installation.md)
-2. [Create your first goction](./quickstart.md#create-your-first-goction)
-3. Execute your goction via HTTP:
+2. Create your first goction:
+   ```bash
+   goction new my_first_goction
+   ```
+3. Edit the `main.go` file in the newly created goction directory
+4. Update your goction:
+   ```bash
+   goction update my_first_goction
+   ```
+5. Execute your goction via HTTP:
+   ```bash
+   curl -X POST \
+     -H "Content-Type: application/json" \
+     -H "X-API-Token: your-secret-token" \
+     -d '{"args":["arg1", "arg2"]}' \
+     http://localhost:8080/api/goctions/my_first_goction
+   ```
 
-```bash
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -H "X-API-Token: your-secret-token" \
-  -d '{"args":["arg1", "arg2"]}' \
-  http://localhost:8080/goctions/my_first_goction
-```
+## Table of Contents
 
-## 3. Table of Contents
-
-1. [Quick Start](./quickstart.md)
+1. [Concepts](./concepts.md)
 2. [Installation](./installation.md)
 3. [Configuration](./configuration.md)
 4. [Usage](./usage.md)
-5. [Advanced Topics](./advanced.md)
+5. [Commands](./commands.md)
+6. [Advanced Topics](./advanced.md)
+7. [Troubleshooting](./troubleshooting.md)
+8. [Dashboard](./dashboard.md)
+9. [Securing with Caddy](./securing-with-caddy.md)
 
-Whether you're new to Goction or an experienced user, this guide has something for everyone. Let's begin with the [Quick Start](./quickstart.md) to get you up and running in no time!
-
-For more detailed information on using Goction, including how to create, manage, and execute goctions, check out our [Usage Guide](./usage.md).
-
-<FeedbackComponent />
+Whether you're new to Goction or an experienced user, this guide has something for everyone. Let's begin with understanding the [core concepts](./concepts.md) of Goction!

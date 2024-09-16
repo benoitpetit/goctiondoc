@@ -2,14 +2,14 @@
 
 This guide provides detailed instructions for installing Goction on your system.
 
-## 1. Prerequisites
+## Prerequisites
 
 Before installing Goction, ensure you have:
 
 - Go 1.16 or higher
 - An operating system compatible with systemd (e.g., most Linux distributions)
 
-## 2. Quick Installation (Recommended)
+## Quick Installation (Recommended)
 
 You can quickly install Goction using our installation script:
 
@@ -19,7 +19,7 @@ curl -sSL https://raw.githubusercontent.com/goction/goction/master/hack/install.
 
 This script will download and install Goction on your system.
 
-## 3. Manual Installation
+## Manual Installation
 
 If you prefer to install Goction manually, follow these steps:
 
@@ -34,7 +34,15 @@ If you prefer to install Goction manually, follow these steps:
    sudo ./hack/install.sh
    ```
 
-## 4. Verifying the Installation
+## Post-Installation
+
+After installation:
+
+1. The Goction service will be installed and started automatically.
+2. A configuration file will be created at `/etc/goction/config.json`.
+3. The goctions directory will be created at `/etc/goction/goctions/`.
+
+## Verifying the Installation
 
 After installation, verify that Goction is installed correctly by running:
 
@@ -44,19 +52,7 @@ goction --version
 
 This should display the version of Goction installed on your system.
 
-## 5. Post-Installation
-
-After installation:
-
-1. The Goction service will be installed and started automatically.
-2. A configuration file will be created at:
-   - For root: `/etc/goction/config.json`
-   - For other users: `~/.config/goction/config.json`
-3. The goctions directory will be created at:
-   - For root: `/etc/goction/goctions/`
-   - For other users: `~/.config/goction/goctions/`
-
-## 6. Uninstallation
+## Uninstallation
 
 To uninstall Goction, use the removal script:
 
@@ -66,4 +62,4 @@ sudo ./hack/remove.sh
 
 This script will remove all Goction files, including your goctions and configuration. Make sure to backup any important goctions before uninstalling.
 
-<FeedbackComponent/>
+For more information on configuring Goction, please refer to the [Configuration Guide](./configuration.md).

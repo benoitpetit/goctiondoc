@@ -21,5 +21,3 @@ We welcome contributions from the community! Here's how you can contribute:
 
 
 Thank you for being part of the Goction community!
-
-<FeedbackComponent/>

@@ -2,35 +2,35 @@
 
 This guide covers the main usage scenarios for Goction.
 
-## 1. Managing Goctions
+## Managing Goctions
 
-### a. Creating a New Goction
+### Creating a New Goction
 ```bash
 goction new my_goction
 ```
 
-### b. Listing Goctions
+### Listing Goctions
 ```bash
 goction list
 ```
 
-### c. Updating a Goction
+### Updating a Goction
 ```bash
 goction update my_goction
 ```
 
-### d. Modifying a Goction
-1. Navigate to the goction's directory.
+### Modifying a Goction
+1. Navigate to the goction's directory: `/etc/goction/goctions/my_goction/`
 2. Edit the `main.go` file.
 3. Run `goction update my_goction`
 
-## 2. Service Management
+## Service Management
 
-### a. Using Goction Commands
-Start: `goction start`
-Stop: `goction stop`
+### Using Goction Commands
+- Start: `goction start`
+- Stop: `goction stop`
 
-### b. Using Systemd
+### Using Systemd
 - Start: `sudo systemctl start goction`
 - Stop: `sudo systemctl stop goction`
 - Restart: `sudo systemctl restart goction`
@@ -38,26 +38,21 @@ Stop: `goction stop`
 - Enable at boot: `sudo systemctl enable goction`
 - Disable at boot: `sudo systemctl disable goction`
 
-## 3. Using the API
+## Using the API
+
+Execute a goction via the HTTP API:
+
 ```bash
-curl -X POST -H "Content-Type: application/json" -H "X-API-Token: your-secret-token" -d '{"args":["arg1", "arg2"]}' http://localhost:8080/goctions/my_goction
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "X-API-Token: your-secret-token" \
+  -d '{"args":["arg1", "arg2"]}' \
+  http://localhost:8080/api/goctions/my_goction
 ```
 
-## 4. Dashboard CLI and Execution
+## Dashboard
 
-### a. Displaying the Dashboard
-```bash
-goction dashboard
-```
-
-### b. Executing a Goction
-```bash
-goction run my_goction [arg1 arg2 ...]
-```
-
-## 5. Dashboard HTTP
-
-Goction provides a powerful web-based dashboard for managing and monitoring your goctions. To access the dashboard:
+To access the web-based dashboard:
 
 1. Ensure the Goction service is running.
 2. Open your web browser and navigate to `http://localhost:8080` (or the configured address).
@@ -65,33 +60,25 @@ Goction provides a powerful web-based dashboard for managing and monitoring your
 
 For more detailed information about the dashboard features and usage, please refer to our [Dashboard Guide](./dashboard.md).
 
+## Advanced Usage
 
-## 6. Advanced Usage
+### Viewing Logs
+- Goction logs: `goction logs`
+- Systemd service logs: `sudo journalctl -u goction`
 
-### a. Viewing Logs
-Goction logs: `goction logs`
-Systemd service logs: `sudo journalctl -u goction`
-
-### b. Checking Goction Stats
+### Checking Goction Stats
 ```bash
 goction stats my_goction
 ```
 
-### c. Updating Goction
-```bash
-goction self-update
-```
-
-### d. Exporting a Goction
+### Exporting a Goction
 ```bash
 goction export my_goction
 ```
 
-### e. Importing a Goction
+### Importing a Goction
 ```bash
 goction import my_goction.zip
 ```
 
-Remember to check the [configuration guide](/guide/configuration.md) for customizing Goction's behavior.
-
-<FeedbackComponent/>
+For more advanced topics and usage scenarios, please refer to the [Advanced Guide](./advanced.md).

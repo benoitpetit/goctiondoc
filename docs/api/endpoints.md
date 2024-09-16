@@ -6,7 +6,7 @@ This document provides details on all available endpoints in the Goction API.
 
 Execute a specific goction.
 
-- **URL**: `/goctions/{goction_name}`
+- **URL**: `/api/goctions/{goction_name}`
 - **Method**: `POST`
 - **Auth required**: Yes
 
@@ -45,7 +45,7 @@ Execute a specific goction.
 
 Retrieve a list of all available goctions.
 
-- **URL**: `/goctions`
+- **URL**: `/api/goctions`
 - **Method**: `GET`
 - **Auth required**: Yes
 
@@ -64,7 +64,7 @@ Retrieve a list of all available goctions.
 
 Retrieve information about a specific goction.
 
-- **URL**: `/goctions/{goction_name}/info`
+- **URL**: `/api/goctions/{goction_name}/info`
 - **Method**: `GET`
 - **Auth required**: Yes
 
@@ -89,7 +89,7 @@ Retrieve information about a specific goction.
 
 Retrieve the execution history of a specific goction.
 
-- **URL**: `/goctions/{goction_name}/history`
+- **URL**: `/api/goctions/{goction_name}/history`
 - **Method**: `GET`
 - **Auth required**: Yes
 
@@ -112,4 +112,4 @@ Retrieve the execution history of a specific goction.
 }
 ```
 
-<FeedbackComponent/>
+For more information on handling API responses and errors, please refer to the [Error Handling](./error-handling.md) section.

@@ -91,5 +91,3 @@ Goction can be integrated with various monitoring systems:
 - Use HTTPS for API communication
 - Implement rate limiting to prevent abuse
 - Regularly update Goction and its dependencies
-
-<FeedbackComponent/>

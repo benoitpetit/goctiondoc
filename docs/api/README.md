@@ -11,7 +11,7 @@ The Goction API is a RESTful API that uses JSON for serialization and token-base
 All API requests should be made to:
 
 ```
-http://localhost:8080/
+http://localhost:8080/api
 ```
 
 Replace `localhost` with your server's hostname or IP address if you're accessing the API remotely.
@@ -28,4 +28,8 @@ For a complete list of available endpoints and their usage, see the [Endpoints](
 
 The API uses conventional HTTP response codes to indicate the success or failure of requests. See the [Error Handling](./error-handling.md) section for more information.
 
-<FeedbackComponent/>
+## Rate Limiting
+
+The API implements rate limiting to prevent abuse. See the [Rate Limiting](./rate-limiting.md) section for details on limits and how to handle rate limit errors.
+
+For any questions or issues not covered in this documentation, please refer to our [Community](../community.md) page for support options.

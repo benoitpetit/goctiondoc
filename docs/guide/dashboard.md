@@ -1,8 +1,8 @@
-# Goction Dashboard (beta)
+# Goction Dashboard
 
 The Goction Dashboard is an intuitive and powerful web interface for managing and monitoring your goctions (Goction actions). It provides a comprehensive overview of your configurations, statistics, and real-time logs.
 
-## 1. Features
+## Features
 
 - **Dark UI**: A modern, ergonomic design optimized for extended use.
 - **Secure Authentication**: Protect your data with a robust login system.
@@ -11,27 +11,28 @@ The Goction Dashboard is an intuitive and powerful web interface for managing an
 - **Execution History**: View the complete history of your goctions' executions.
 - **Real-time Logs**: Visualize the most recent logs directly from the interface.
 
-### a. Dashboard Overview
+## Accessing the Dashboard
 
-![DashboardLogin](/images/dashboardlogin.png)
-![Dashboard](/images/dashboard.png)
+1. Ensure the Goction service is running:
+   ```bash
+   sudo systemctl status goction
+   ```
+   If it's not running, start it with:
+   ```bash
+   sudo systemctl start goction
+   ```
 
-## 2. Configuration
+2. Open your web browser and navigate to:
+   ```
+   http://localhost:8080
+   ```
+   Replace `localhost` with your server's IP address or domain name if accessing remotely.
 
-### a. Prerequisites
+3. Log in using the credentials set in your Goction configuration file.
 
-- Goction installed and configured on your system
-- A modern web browser
+## Dashboard Configuration
 
-### b. Accessing the Dashboard
-
-1. Ensure the Goction service is running.
-2. Open your browser and navigate to `http://localhost:8080` (or the address configured for your installation).
-3. Use the credentials set in your Goction configuration file to log in.
-
-### c. Dashboard Configuration
-
-The dashboard uses the parameters defined in your Goction configuration file `~/.config/goction/config.json`.
+The dashboard uses the parameters defined in your Goction configuration file `/etc/goction/config.json`.
 Here are the main elements to configure:
 
 ```json
@@ -46,10 +47,46 @@ Here are the main elements to configure:
 - `dashboard_password`: The password for accessing the dashboard.
 - `port`: The port on which the Goction server (and thus the dashboard) will be accessible.
 
-## 3. Customization
+To modify these settings:
 
-The dashboard uses the Bulma CSS framework and is designed to be easily customizable. If you want to modify the appearance or add new features, you can edit the template files located in the `internal/api/dashboard/templates/` folder.
+1. Open the configuration file:
+   ```bash
+   sudo nano /etc/goction/config.json
+   ```
+2. Make your changes and save the file.
+3. Restart the Goction service:
+   ```bash
+   sudo systemctl restart goction
+   ```
 
----
+## Dashboard Sections
 
-We hope this dashboard will help you get the most out of your goctions. Don't hesitate to provide feedback and suggestions to further improve it!
+1. **Overview**: Displays general information about your Goction installation, including version, uptime, and total number of goctions.
+
+2. **Goctions List**: Shows all available goctions with options to view details, execute, or manage each one.
+
+3. **Execution History**: Provides a detailed log of all goction executions, including timestamps, duration, and results.
+
+4. **System Logs**: Displays recent system logs for troubleshooting and monitoring.
+
+5. **Configuration**: Allows you to view and edit your Goction configuration directly from the dashboard.
+
+## Security Considerations
+
+- Always use a strong, unique password for dashboard access.
+- Consider setting up HTTPS to encrypt dashboard traffic. You can use a reverse proxy like Nginx or Caddy for this purpose. For detailed instructions on securing Goction with Caddy, see our [Securing with Caddy](./securing-with-caddy.md) guide.
+- Regularly update your Goction installation to ensure you have the latest security patches.
+
+## Troubleshooting
+
+If you're having trouble accessing the dashboard:
+
+1. Verify that the Goction service is running.
+2. Check the Goction logs for any error messages:
+   ```bash
+   sudo journalctl -u goction
+   ```
+3. Ensure your firewall allows traffic on the configured port (default 8080).
+4. Verify that the dashboard credentials in `/etc/goction/config.json` are correct.
+
+For more detailed information on using Goction, please refer to the [Usage Guide](./usage.md).

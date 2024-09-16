@@ -1,55 +1,75 @@
 # Configuration Guide
 
-## 1. Configuration File Location
-- Root: `/etc/goction/config.json`
-- Other users: `~/.config/goction/config.json`
+This guide explains how to configure Goction to suit your needs.
 
-## 2. Configuration Options
-Example configuration:
+## Configuration File Location
+
+The Goction configuration file is located at:
+
+- `/etc/goction/config.json`
+
+## Configuration Options
+
+Here's an example of a typical Goction configuration file:
+
 ```json
 {
-  "goctions_dir": "/path/to/your/goctions",
+  "goctions_dir": "/etc/goction/goctions",
   "port": 8080,
-  "log_file": "/path/to/goction.log",
+  "log_file": "/var/log/goction/goction.log",
   "api_token": "your-secret-api-token",
-  "stats_file": "/path/to/goction_stats.json"
+  "stats_file": "/var/log/goction/goction_stats.json",
+  "dashboard_username": "admin",
+  "dashboard_password": "your-dashboard-password"
 }
 ```
 
-## 3. Modifying the Configuration
-1. Edit the configuration file
-2. Save changes
-3. Restart the service:
+Let's break down each option:
+
+- `goctions_dir`: The directory where your goctions are stored.
+- `port`: The port number for the HTTP API and dashboard.
+- `log_file`: The location of the Goction log file.
+- `api_token`: The secret token used for API authentication.
+- `stats_file`: The location of the file storing goction execution statistics.
+- `dashboard_username`: The username for accessing the web dashboard.
+- `dashboard_password`: The password for accessing the web dashboard.
+
+## Modifying the Configuration
+
+To modify the configuration:
+
+1. Open the configuration file in a text editor:
+   ```bash
+   sudo nano /etc/goction/config.json
+   ```
+2. Make your changes and save the file.
+3. Restart the Goction service for the changes to take effect:
    ```bash
    sudo systemctl restart goction
    ```
 
-## 4. Viewing Current Configuration
+## Viewing Current Configuration
+
+You can view the current configuration using the following command:
+
 ```bash
 goction config view
 ```
 
-## 5. Resetting the Configuration
+## Resetting the Configuration
+
+To reset the configuration to default values:
+
 ```bash
 goction config reset
 ```
 
-## 6. Systemd Service Configuration
-1. Edit the service file:
-   ```bash
-   sudo nano /etc/systemd/system/goction.service
-   ```
-2. Make changes
-3. Save the file
-4. Reload systemd:
-   ```bash
-   sudo systemctl daemon-reload
-   ```
-5. Restart the service:
-   ```bash
-   sudo systemctl restart goction
-   ```
+Remember to restart the Goction service after resetting the configuration.
 
-Remember to keep your `api_token` secure.
+## Security Considerations
 
-<FeedbackComponent/>
+- Keep your `api_token` secret and change it regularly.
+- Use strong passwords for the dashboard access.
+- Consider using environment variables for sensitive information in production environments.
+
+For more information on using Goction, please refer to the [Usage Guide](./usage.md).

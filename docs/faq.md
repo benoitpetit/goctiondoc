@@ -47,5 +47,3 @@ First, check the logs using `goction logs`. If you see any errors, make sure you
 ### I'm getting a "permission denied" error when trying to start the Goction service. What's wrong?
 
 This usually means you're not running the command with sufficient privileges. Try using `sudo goction start` to start the service.
-
-<FeedbackComponent/>

@@ -66,5 +66,3 @@ If all else fails, you can try resetting Goction:
 If problems persist, consider uninstalling and reinstalling Goction.
 
 For further assistance, please open an issue on the [Goction GitHub repository](https://github.com/goction/goction/issues).
-
-<FeedbackComponent/>

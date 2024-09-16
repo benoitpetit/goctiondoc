@@ -1,12 +1,12 @@
-# Authentication in Goction
+# Authentication
 
-Goction uses token-based authentication to secure access to its API and certain CLI commands. This document explains how authentication works in Goction, how to manage tokens, and best practices for security.
+The Goction API uses token-based authentication to secure access to its endpoints.
 
 ## API Token
 
 The API token is a secret key used to authenticate requests to the Goction API. It's essential to keep this token secure and not share it publicly.
 
-### Generating a Token
+### Obtaining the API Token
 
 When you first install Goction, a random API token is generated automatically. You can view this token using the following command:
 
@@ -14,7 +14,7 @@ When you first install Goction, a random API token is generated automatically. Y
 goction token
 ```
 
-### Regenerating a Token
+### Regenerating the API Token
 
 If you need to regenerate your token for security reasons, use:
 
@@ -24,33 +24,29 @@ goction token regenerate
 
 This will invalidate the old token and generate a new one.
 
-## Using the Token
+## Using the API Token
 
-### In API Requests
+To authenticate your requests to the Goction API, include the API token in the `X-API-Token` header of your HTTP requests.
 
-When making requests to the Goction API, include the token in the `X-API-Token` header:
+Example:
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
   -H "X-API-Token: your-secret-token" \
   -d '{"args":["arg1", "arg2"]}' \
-  http://localhost:8080/goctions/my_goction
+  http://localhost:8080/api/goctions/my_goction
 ```
 
-### In Configuration
+## Security Best Practices
 
-The token is stored in your Goction configuration file. By default, this file is located at:
+1. Keep your API token confidential.
+2. Regenerate your API token periodically.
+3. Use HTTPS when making API requests in production environments.
+4. Implement proper error handling for authentication failures in your applications.
 
-- For root: `/etc/goction/config.json`
-- For other users: `~/.config/goction/config.json`
+## Authentication Errors
 
-## CLI Commands and Authentication
+If authentication fails, the API will return a 401 Unauthorized status code. See the [Error Handling](./error-handling.md) section for more details on API errors.
 
-Most CLI commands do not require explicit authentication as they use the token stored in the configuration file. However, commands that interact with the API (like `goction run`) will use this token automatically.
-
----
-
-Remember, security is a shared responsibility. While we strive to make Goction as secure as possible, it's crucial to follow best practices and keep your systems and tokens secure.
-
-<FeedbackComponent />
+For more information on configuring and managing your Goction installation, please refer to the [Configuration Guide](../guide/configuration.md).
