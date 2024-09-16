@@ -1,23 +1,28 @@
-# Advanced Goction Usage
+# Advanced Topics
 
-This guide covers advanced features and usage scenarios for Goction, aimed at users who are already familiar with the basics.
+This guide covers advanced features and usage scenarios for Goction.
 
-## Custom Goction Development
+## 1. Custom Goction Development
 
-### Using External Packages
+### a. Using External Packages
 
-1. Initialize a Go module in your goction directory:
+You can use any Go packages in your goctions. Here's how:
+
+1. In your goction directory, initialize a Go module:
+
    ```bash
    cd /etc/goction/goctions/my_goction
    go mod init my_goction
    ```
 
-2. Add dependencies:
+2. Add your dependencies:
+
    ```bash
    go get github.com/example/package
    ```
 
 3. Use the package in your `main.go`:
+
    ```go
    import "github.com/example/package"
    ```
@@ -27,125 +32,116 @@ This guide covers advanced features and usage scenarios for Goction, aimed at us
    goction update my_goction
    ```
 
-### Best Practices for Goction Development
+For more details on goction structure and creation, see the [Usage Guide](./usage.md#goction-structure-and-creation).
 
-- Keep goctions focused on a single task
+### b. Goction Best Practices
+
+- Keep your goctions focused on a single task
 - Use meaningful names for your goctions
 - Handle errors gracefully
 - Use environment variables for sensitive information
-- Write unit tests for your goctions
 
-## Advanced API Usage
+## 2. API Authentication
 
-### Batch Execution
-
-Execute multiple goctions in a single API call:
+Goction uses token-based authentication for its API. To generate a new token:
 
 ```bash
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -H "X-API-Token: your-secret-token" \
-  -d '{
-    "goctions": [
-      {"name": "goction1", "args": ["arg1", "arg2"]},
-      {"name": "goction2", "args": ["arg3"]}
-    ]
-  }' \
-  http://localhost:8080/api/batch
+goction token generate
 ```
 
-### Webhooks
+Use this token in the `X-API-Token` header when making API requests.
 
-Configure webhooks to trigger goctions on external events:
+For more information on API usage and authentication, see our [API Reference](../api/README.md).
 
-1. Set up a webhook in the Goction configuration:
-   ```json
-   {
-     "webhooks": {
-       "my_webhook": {
-         "goction": "my_goction",
-         "secret": "webhook_secret"
-       }
-     }
-   }
-   ```
+## 3. Advanced Goction Example
 
-2. Trigger the webhook:
-   ```bash
-   curl -X POST \
-     -H "X-Webhook-Secret: webhook_secret" \
-     -d '{"data": "example"}' \
-     http://localhost:8080/api/webhooks/my_webhook
-   ```
+Here's an example of a more complex goction that interacts with an external API:
 
-## Performance Tuning
+```go
+package main
 
-### Optimizing Goction Execution
+import (
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
 
-- Use goroutines for concurrent operations
-- Implement caching for frequently accessed data
-- Profile your goctions to identify bottlenecks
+func JokeGoction(args ...string) (string, error) {
+    // Make a request to a joke API
+    resp, err := http.Get("https://official-joke-api.appspot.com/random_joke")
+    if err != nil {
+        return "", fmt.Errorf("error making request to joke API: %v", err)
+    }
+    defer resp.Body.Close()
 
-### Scaling Goction
+    // Read the response body
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        return "", fmt.Errorf("error reading response body: %v", err)
+    }
 
-For high-load scenarios, consider:
+    // Parse the JSON response
+    var joke struct {
+        Setup     string `json:"setup"`
+        Punchline string `json:"punchline"`
+    }
+    err = json.Unmarshal(body, &joke)
+    if err != nil {
+        return "", fmt.Errorf("error parsing JSON response: %v", err)
+    }
 
-- Using a load balancer
-- Implementing a distributed goction execution system
-- Optimizing your database queries
+    // Create the result string
+    result := fmt.Sprintf("%s\n%s", joke.Setup, joke.Punchline)
 
-## Advanced Monitoring and Logging
+    // Create the response in the generic format
+    response := map[string]string{
+        "result": result,
+        "action": "joke_goction",
+    }
 
-### Integrating with External Monitoring Systems
+    // Marshal the response to JSON
+    jsonResponse, err := json.Marshal(response)
+    if err != nil {
+        return "", fmt.Errorf("error creating JSON response: %v", err)
+    }
 
-Goction can be integrated with various monitoring systems:
+    return string(jsonResponse), nil
+}
+```
 
-- Prometheus for metrics collection
-- ELK stack for log analysis
-- Grafana for visualization
+This goction fetches a random joke from an external API and returns it in the standard Goction response format.
 
-### Custom Logging
+## 4. Monitoring and Logging
 
-Configure advanced logging options in your `config.json`:
+### a. Advanced Logging
+
+Goction uses logrus for logging. You can configure advanced logging options in your `config.json`:
 
 ```json
 {
   "log_level": "debug",
-  "log_format": "json",
-  "log_output": ["file", "stdout"],
-  "log_file": "/var/log/goction/goction.log"
+  "log_format": "json"
 }
 ```
 
-## Security Enhancements
+For more details on configuration options, see our [Configuration Guide](./configuration.md).
 
-- Implement IP whitelisting for API access
-- Use mutual TLS (mTLS) for API authentication
-- Encrypt sensitive data in goctions using Goction's built-in encryption helpers
+### b. Checking Goction Stats
 
-## Extending Goction
+To view statistics for a specific goction:
 
-### Creating Plugins
+```bash
+goction stats my_goction
+```
 
-Develop plugins to extend Goction's functionality:
+## 5. Security Considerations
 
-1. Create a new Go package implementing the Goction plugin interface
-2. Build your plugin as a shared object (.so file)
-3. Place the .so file in the Goction plugins directory
-4. Update the Goction configuration to load your plugin
+- Regularly rotate your API tokens
+- Use HTTPS for API communication
+- Implement rate limiting to prevent abuse
+- Regularly update Goction and its dependencies
 
-### Custom Dashboard Widgets
+For setting up HTTPS, we recommend using Caddy as a reverse proxy. See our [Securing Goction with Caddy](./securing-with-caddy.md) guide for detailed instructions.
 
-Develop custom widgets for the Goction dashboard:
-
-1. Create a new React component
-2. Register the component in the Goction dashboard configuration
-3. Restart the Goction service to load the new widget
-
-## Automation and CI/CD Integration
-
-- Use Goction in your CI/CD pipelines for automated tasks
-- Integrate Goction with configuration management tools like Ansible or Puppet
-- Develop goctions for automated deployment and rollback procedures
-
-For more information on these advanced topics, please refer to our [API Documentation](../api/README.md) and [Configuration Guide](./configuration.md).
+Remember to always refer to the official Goction documentation for the most up-to-date information on advanced features and best practices.
