@@ -11,21 +11,31 @@ The Goction Dashboard is an intuitive and powerful web interface for managing an
 - **Execution History**: View the complete history of your goctions' executions.
 - **Real-time Logs**: Visualize the most recent logs directly from the interface.
 
+### Dashboard Overview
+
+![DashboardLogin](/images/dashboardlogin.png)
+![Dashboard](/images/dashboard.png)
+
 ## Accessing the Dashboard
 
 1. Ensure the Goction service is running:
+
    ```bash
    sudo systemctl status goction
    ```
+
    If it's not running, start it with:
+
    ```bash
    sudo systemctl start goction
    ```
 
 2. Open your web browser and navigate to:
+
    ```
    http://localhost:8080
    ```
+
    Replace `localhost` with your server's IP address or domain name if accessing remotely.
 
 3. Log in using the credentials set in your Goction configuration file.

@@ -34,9 +34,25 @@ Create a new goction named `hello_world`:
 goction new hello_world
 ```
 
-This creates a new directory `/etc/goction/goctions/hello_world` with a `main.go` file.
+This creates a new directory `/etc/goction/goctions/hello_world` with a `main.go` file and a `go.mod` file.
 
-## 4. Edit Your Goction
+## 4. Understanding Goction Structure
+
+A goction consists of at least two files:
+
+1. `main.go`: Contains the main logic of your goction.
+2. `go.mod`: Declares the module and its dependencies.
+
+Here's the directory structure for our `hello_world` goction:
+
+```
+/etc/goction/goctions/
+└── hello_world/
+    ├── main.go
+    └── go.mod
+```
+
+## 5. Edit Your Goction
 
 Open the `main.go` file:
 
@@ -44,22 +60,45 @@ Open the `main.go` file:
 sudo nano /etc/goction/goctions/hello_world/main.go
 ```
 
-Replace the content with this simple example:
+Replace the content with this example:
 
 ```go
 package main
 
-import "fmt"
+import (
+    "encoding/json"
+    "fmt"
+)
 
 func HelloWorld(args ...string) (string, error) {
-    if len(args) == 0 {
-        return "Hello, World!", nil
+    var name string
+    if len(args) > 0 {
+        name = args[0]
+    } else {
+        name = "World"
     }
-    return fmt.Sprintf("Hello, %s!", args[0]), nil
+    
+    result := fmt.Sprintf("Hello, %s!", name)
+    response := map[string]string{
+        "result": result,
+        "action": "hello_world",
+    }
+    
+    jsonResponse, err := json.Marshal(response)
+    if err != nil {
+        return "", fmt.Errorf("error creating JSON response: %v", err)
+    }
+    
+    return string(jsonResponse), nil
 }
 ```
 
-## 5. Update Your Goction
+This goction does the following:
+- Accepts an optional name argument
+- Constructs a greeting
+- Returns a JSON response with the result and action name
+
+## 6. Update Your Goction
 
 After editing, update the goction:
 
@@ -67,7 +106,7 @@ After editing, update the goction:
 goction update hello_world
 ```
 
-## 6. Start the Goction Service
+## 7. Start the Goction Service
 
 Start the Goction service to enable API access:
 
@@ -75,7 +114,7 @@ Start the Goction service to enable API access:
 sudo systemctl start goction
 ```
 
-## 7. Execute Your Goction
+## 8. Execute Your Goction
 
 Now you can execute your goction via the HTTP API:
 
@@ -83,7 +122,7 @@ Now you can execute your goction via the HTTP API:
 curl -X POST \
   -H "Content-Type: application/json" \
   -H "X-API-Token: your-secret-token" \
-  -d '{"args":["World"]}' \
+  -d '{"args":["Alice"]}' \
   http://localhost:8080/api/goctions/hello_world
 ```
 
@@ -93,7 +132,13 @@ Replace `your-secret-token` with your actual API token. You can find your token 
 goction token
 ```
 
-## 8. Using the Dashboard
+You should receive a JSON response like this:
+
+```json
+{"result":"Hello, Alice!","action":"hello_world"}
+```
+
+## 9. Using the Dashboard
 
 Access the Goction dashboard by opening a web browser and navigating to:
 
@@ -103,8 +148,9 @@ http://localhost:8080
 
 Log in using the credentials set in your `/etc/goction/config.json` file.
 
-## 9. Next Steps
+## 10. Next Steps
 
 - Explore the [full installation guide](./installation.md) for more options
 - Learn about [configuration](./configuration.md) to customize Goction
 - Check out the [usage guide](./usage.md) for more detailed information
+- See the [advanced topics](./advanced.md) for more complex goction examples

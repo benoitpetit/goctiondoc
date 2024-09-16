@@ -1,85 +1,86 @@
 # Goction Commands
 
-This page provides a comprehensive list of all available commands in Goction.
+This page provides a comprehensive list of all available commands in Goction, organized by category.
 
-## 1. Basic Commands
+## Goction Management
 
-### a. `goction new <goction-name>`
-
+### `goction new <goction-name>`
 Creates a new goction with the specified name.
 
-### b. `goction list`
-
+### `goction list`
 Lists all available goctions.
 
-### c. `goction update <goction-name>`
-
+### `goction update <goction-name>`
 Updates an existing goction.
 
-### d. `goction run <goction-name> [args...]`
-
+### `goction run <goction-name> [args...]`
 Executes a specific goction with optional arguments.
 
-## 2. Service Management
+### `goction export <goction-name>`
+Exports a goction to a zip file for sharing or backup.
 
-### a. `goction start`
+### `goction import <file.zip>`
+Imports a goction from a zip file.
 
+## Service Management
+
+### `goction start`
 Starts the Goction service.
 
-### b. `goction stop`
-
+### `goction stop`
 Stops the Goction service.
 
-## 3. Statistics and Monitoring
+### `goction restart`
+Restarts the Goction service.
 
-### a. `goction stats [goction-name]`
+### `goction status`
+Displays the current status of the Goction service.
 
-Displays statistics for all goctions or a specific goction if name is provided.
+## Configuration and Security
 
-### b. `goction dashboard`
-
-Shows the Goction dashboard with system information, recent logs, and goction statistics.
-
-## 4. Configuration
-
-### a. `goction config view`
-
+### `goction config view`
 Displays the current Goction configuration.
 
-### b. `goction config reset`
-
+### `goction config reset`
 Resets the Goction configuration to default values.
 
-## 5. API and Security
-
-### a. `goction token`
-
+### `goction token`
 Displays the current API token.
 
-## 6. Maintenance
+### `goction token regenerate`
+Regenerates the API token.
 
-### a. `goction self-update`
+## Monitoring and Logging
 
-Updates Goction to the latest version (when implemented).
+### `goction stats [goction-name]`
+Displays statistics for all goctions or a specific goction if name is provided.
 
-## 7. Logging
-
-### a. `goction logs`
-
+### `goction logs`
 Displays recent log entries.
 
-## 8. Help
+### `goction dashboard`
+Launches the Goction web dashboard.
 
-### a. `goction --help`
+## Maintenance
 
+### `goction self-update`
+Updates Goction to the latest version.
+
+## Help and Information
+
+### `goction --help`
 Displays help information about Goction commands.
 
-### b. `goction <command> --help`
-
+### `goction <command> --help`
 Displays help information for a specific command.
 
-Remember to use these commands with appropriate permissions. Some commands may require administrator privileges, especially those related to service management and configuration.
+### `goction version`
+Displays the current version of Goction.
 
-For detailed information on each command, including usage examples and options, please refer to the respective sections in this documentation.
+## Usage Notes
 
-<FeedbackComponent />
+- Some commands may require administrator privileges, especially those related to service management and configuration.
+- Use `goction <command> --help` for detailed information on each command's usage and options.
+- For security reasons, always use `goction token regenerate` after suspecting that your API token might have been compromised.
+
+For more detailed information on using these commands, please refer to the [Usage Guide](./usage.md).

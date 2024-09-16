@@ -1,62 +1,92 @@
-# Advanced Topics
+# Advanced Goction Usage
 
-This guide covers advanced features and usage scenarios for Goction.
+This guide covers advanced features and usage scenarios for Goction, aimed at users who are already familiar with the basics.
 
-## 1. Custom Goction Development
+## Custom Goction Development
 
-### a. Using External Packages
+### Using External Packages
 
-You can use any Go packages in your goctions. Here's how:
-
-1. In your goction directory, initialize a Go module:
-
+1. Initialize a Go module in your goction directory:
    ```bash
-   go mod init mygoction
+   cd /etc/goction/goctions/my_goction
+   go mod init my_goction
    ```
 
-2. Add your dependencies:
-
+2. Add dependencies:
    ```bash
    go get github.com/example/package
    ```
 
 3. Use the package in your `main.go`:
-
    ```go
    import "github.com/example/package"
    ```
 
 4. Update your goction:
    ```bash
-   goction update mygoction
+   goction update my_goction
    ```
 
-### b. Goction Best Practices
+### Best Practices for Goction Development
 
-- Keep your goctions focused on a single task
+- Keep goctions focused on a single task
 - Use meaningful names for your goctions
 - Handle errors gracefully
 - Use environment variables for sensitive information
+- Write unit tests for your goctions
 
-## 2. API Authentication
+## Advanced API Usage
 
-Goction uses token-based authentication for its API. To generate a new token:
+### Batch Execution
+
+Execute multiple goctions in a single API call:
 
 ```bash
-goction token generate
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "X-API-Token: your-secret-token" \
+  -d '{
+    "goctions": [
+      {"name": "goction1", "args": ["arg1", "arg2"]},
+      {"name": "goction2", "args": ["arg3"]}
+    ]
+  }' \
+  http://localhost:8080/api/batch
 ```
 
-Use this token in the `X-API-Token` header when making API requests.
+### Webhooks
 
-## 3. Performance Tuning
+Configure webhooks to trigger goctions on external events:
 
-### a. Optimizing Goction Execution
+1. Set up a webhook in the Goction configuration:
+   ```json
+   {
+     "webhooks": {
+       "my_webhook": {
+         "goction": "my_goction",
+         "secret": "webhook_secret"
+       }
+     }
+   }
+   ```
+
+2. Trigger the webhook:
+   ```bash
+   curl -X POST \
+     -H "X-Webhook-Secret: webhook_secret" \
+     -d '{"data": "example"}' \
+     http://localhost:8080/api/webhooks/my_webhook
+   ```
+
+## Performance Tuning
+
+### Optimizing Goction Execution
 
 - Use goroutines for concurrent operations
 - Implement caching for frequently accessed data
 - Profile your goctions to identify bottlenecks
 
-### b. Scaling Goction
+### Scaling Goction
 
 For high-load scenarios, consider:
 
@@ -64,20 +94,9 @@ For high-load scenarios, consider:
 - Implementing a distributed goction execution system
 - Optimizing your database queries
 
-## 4. Monitoring and Logging
+## Advanced Monitoring and Logging
 
-### a. Advanced Logging
-
-Goction uses logrus for logging. You can configure advanced logging options in your `config.json`:
-
-```json
-{
-  "log_level": "debug",
-  "log_format": "json"
-}
-```
-
-### b. Integrating with Monitoring Systems
+### Integrating with External Monitoring Systems
 
 Goction can be integrated with various monitoring systems:
 
@@ -85,9 +104,48 @@ Goction can be integrated with various monitoring systems:
 - ELK stack for log analysis
 - Grafana for visualization
 
-## 5. Security Considerations
+### Custom Logging
 
-- Regularly rotate your API tokens
-- Use HTTPS for API communication
-- Implement rate limiting to prevent abuse
-- Regularly update Goction and its dependencies
+Configure advanced logging options in your `config.json`:
+
+```json
+{
+  "log_level": "debug",
+  "log_format": "json",
+  "log_output": ["file", "stdout"],
+  "log_file": "/var/log/goction/goction.log"
+}
+```
+
+## Security Enhancements
+
+- Implement IP whitelisting for API access
+- Use mutual TLS (mTLS) for API authentication
+- Encrypt sensitive data in goctions using Goction's built-in encryption helpers
+
+## Extending Goction
+
+### Creating Plugins
+
+Develop plugins to extend Goction's functionality:
+
+1. Create a new Go package implementing the Goction plugin interface
+2. Build your plugin as a shared object (.so file)
+3. Place the .so file in the Goction plugins directory
+4. Update the Goction configuration to load your plugin
+
+### Custom Dashboard Widgets
+
+Develop custom widgets for the Goction dashboard:
+
+1. Create a new React component
+2. Register the component in the Goction dashboard configuration
+3. Restart the Goction service to load the new widget
+
+## Automation and CI/CD Integration
+
+- Use Goction in your CI/CD pipelines for automated tasks
+- Integrate Goction with configuration management tools like Ansible or Puppet
+- Develop goctions for automated deployment and rollback procedures
+
+For more information on these advanced topics, please refer to our [API Documentation](../api/README.md) and [Configuration Guide](./configuration.md).
